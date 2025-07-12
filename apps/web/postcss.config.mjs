@@ -1,0 +1,1 @@
+export { default } from "@acme/tailwind/postcss.config";
