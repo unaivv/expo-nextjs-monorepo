@@ -11,6 +11,6 @@ export const createAuth = (databaseUrl: string) => {
       enabled: true,
     },
     plugins: [expo()],
-    trustedOrigins: ["expo://", "mobile://", "exp://"],
+    trustedOrigins: ["expo://", "mobile://", "exp://", "http://localhost:3000"],
   });
 };
