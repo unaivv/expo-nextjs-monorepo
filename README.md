@@ -4,6 +4,7 @@ A modern monorepo skeleton for building with web and mobile applications. Built 
 
 ## 🚀 Features
 
+- **🔐 Authentication**: Powered by [Better Auth](https://www.better-auth.com/) for secure, cross-platform sign-in/sign-up
 - **📱 Cross-Platform**: Web (Next.js 15) + Mobile (Expo 53)
 - **🎨 Modern UI**: shadcn/ui components + Tailwind CSS v4 (web) + NativeWind v4 (mobile)
 - **⚡ Fast Development**: Turborepo for blazing-fast builds and caching
@@ -37,10 +38,13 @@ expo-nextjs-monorepo/
 ├── apps/
 │   ├── web/                 # Next.js 15 web application
 │   │   ├── app/            # App Router pages
+│   │   ├── api/            # API routes (including Better Auth backend)
 │   │   ├── components/     # Web-specific components
 │   │   └── package.json
 │   └── mobile/             # Expo 53 React Native app
 │       ├── app/            # File-based routing
+│       │   └── api/        # API routes (including Better Auth backend for web)
+│       ├── lib/            # Auth client config (Better Auth for mobile)
 │       ├── components/     # Mobile-specific components
 │       └── package.json
 ├── packages/
@@ -58,7 +62,14 @@ expo-nextjs-monorepo/
 └── pnpm-workspace.yaml     # pnpm workspace configuration
 ```
 
+> **Note:** Better Auth authentication logic and configuration can be found in:
+> - `apps/web/app/api/auth/` (Next.js API routes for auth backend)
+> - `apps/mobile/app/api/auth/` (Expo API routes for web auth)
+> - `apps/mobile/lib/auth/auth-client.ts` (Better Auth client config for mobile)
+
 ## 🚀 Quick Start
+
+> **Note:** Authentication is powered by [Better Auth](https://www.better-auth.com/) and works across both web and mobile (see details below).
 
 ### Prerequisites
 
@@ -146,30 +157,23 @@ pnpm dev --filter=mobile -- --android
 pnpm dev --filter=mobile -- --web
 ```
 
-## 🔐 Authentication (Better Auth) [WIP]
+## 🔐 Authentication (Better Auth)
 
-This monorepo is being integrated with [Better Auth](https://www.better-auth.com/) for authentication across both web (Next.js) and mobile (Expo).
+This monorepo uses [Better Auth](https://www.better-auth.com/) for secure, production-ready authentication across both web (Next.js) and mobile (Expo).
 
-### Current Status
+### Overview
 
 - **Web (Next.js):**  
-  Better Auth is integrated via API routes. You can sign in and sign up using the web app.  
-  _Note: If you see a 400 error, check your request payload and API route implementation._
+  Better Auth is fully integrated via API routes. Sign in and sign up are supported out of the box.
 
 - **Mobile (Expo):**  
-  - **Expo API routes are only available in web mode during development.**  
-    For mobile (native) development, you must point your auth client to a real backend server (e.g., your Next.js API running on your computer’s LAN IP).
-  - Update your `baseURL` in `apps/mobile/lib/auth/auth-client.ts` to use your computer’s LAN IP, e.g.:
-    ```ts
-    baseURL: "http://192.168.1.66:3000"
-    ```
-  - Make sure your device and computer are on the same Wi-Fi network.
-  - If you see requests hanging or pending forever, double-check that you are **not** using `localhost` on mobile.
+  - For native mobile, the auth client is configured to point to your deployed or local Next.js API backend (using your computer’s LAN IP for local development).
+  - Make sure your device and computer are on the same Wi-Fi network for local testing.
+  - Expo API routes are available for web, but native mobile must use a real backend server.
 
-- **Known Issues:**
-  - Expo API routes do **not** work for native mobile in local development ([Expo Docs](https://docs.expo.dev/router/reference/api-routes/)).
-  - HTTPS with self-signed certificates may cause issues on mobile devices.
-  - 400 errors indicate the API is reachable but the request is invalid—check your payload.
+- **Production Ready:**
+  - The authentication flow is stable and ready for production use on both platforms.
+  - Supports secure session management, social login, and more (see Better Auth docs).
 
 ### References
 
@@ -177,8 +181,6 @@ This monorepo is being integrated with [Better Auth](https://www.better-auth.com
 - [Expo API Routes Limitations](https://docs.expo.dev/router/reference/api-routes/)
 
 ---
-
-_This integration is a work in progress. Contributions and suggestions are welcome!_
 
 ## 🎨 UI Components
 
