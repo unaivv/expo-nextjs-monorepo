@@ -6,6 +6,8 @@ import { Link, LinkText } from "@/components/ui/link";
 import { Text } from "@/components/ui/text";
 import { Icon, ArrowRightIcon } from "@/components/ui/icon";
 import { View } from "react-native";
+import SignUp from "./sign-up";
+import SignIn from "./sign-in";
 
 export default function Index() {
   return (
@@ -46,6 +48,8 @@ export default function Index() {
           </HStack>
         </Link>
       </Card>
+      <SignUp />
+      <SignIn />
     </View>
   );
 }

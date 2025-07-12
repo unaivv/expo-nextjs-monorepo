@@ -146,6 +146,40 @@ pnpm dev --filter=mobile -- --android
 pnpm dev --filter=mobile -- --web
 ```
 
+## 🔐 Authentication (Better Auth) [WIP]
+
+This monorepo is being integrated with [Better Auth](https://www.better-auth.com/) for authentication across both web (Next.js) and mobile (Expo).
+
+### Current Status
+
+- **Web (Next.js):**  
+  Better Auth is integrated via API routes. You can sign in and sign up using the web app.  
+  _Note: If you see a 400 error, check your request payload and API route implementation._
+
+- **Mobile (Expo):**  
+  - **Expo API routes are only available in web mode during development.**  
+    For mobile (native) development, you must point your auth client to a real backend server (e.g., your Next.js API running on your computer’s LAN IP).
+  - Update your `baseURL` in `apps/mobile/lib/auth/auth-client.ts` to use your computer’s LAN IP, e.g.:
+    ```ts
+    baseURL: "http://192.168.1.66:3000"
+    ```
+  - Make sure your device and computer are on the same Wi-Fi network.
+  - If you see requests hanging or pending forever, double-check that you are **not** using `localhost` on mobile.
+
+- **Known Issues:**
+  - Expo API routes do **not** work for native mobile in local development ([Expo Docs](https://docs.expo.dev/router/reference/api-routes/)).
+  - HTTPS with self-signed certificates may cause issues on mobile devices.
+  - 400 errors indicate the API is reachable but the request is invalid—check your payload.
+
+### References
+
+- [Better Auth Expo Integration Guide](https://www.better-auth.com/docs/integrations/expo)
+- [Expo API Routes Limitations](https://docs.expo.dev/router/reference/api-routes/)
+
+---
+
+_This integration is a work in progress. Contributions and suggestions are welcome!_
+
 ## 🎨 UI Components
 
 ### Shared UI Package

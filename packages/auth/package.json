@@ -1,0 +1,17 @@
+{
+  "name": "@acme/auth",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "better-auth": "^1.2.12",
+    "pg": "^8.13.3"
+  },
+  "devDependencies": {
+    "@acme/eslint": "workspace:*",
+    "@acme/typescript": "workspace:*",
+    "@types/node": "^22.15.3",
+    "@types/pg": "^8.15.4"
+  }
+}
