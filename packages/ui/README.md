@@ -1,430 +1,135 @@
-# Acme UI Package
+# @hastee-xplat/ui
 
-A shared UI component library for the Acme monorepo. Built with Radix UI primitives and vanilla CSS for consistent design across web and mobile applications.
+Custom UI component library for the Hastee cross-platform monorepo.
 
-## 🚀 Quick Start
+## Overview
 
-### Installation
+This package contains reusable UI components that work across both web (Next.js) and mobile (React Native/Expo) applications.
 
-The UI package is automatically available in the monorepo workspace:
+## Components
 
-```bash
-# No installation needed - it's a workspace dependency
-# Just import and use in your apps
-```
+### Button
 
-### Usage
+A customizable button component with multiple variants and sizes.
 
 ```tsx
-// In web app (apps/web/)
-import { Button } from "@acme/ui/components/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@acme/ui/components/card";
+import { Button } from '@hastee-xplat/ui';
 
-// In mobile app (apps/mobile/)
-import { Button } from "@acme/ui/components/button";
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-} from "@acme/ui/components/card";
+// Basic usage
+<Button>Click me</Button>
+
+// With variants
+<Button variant="primary">Primary</Button>
+<Button variant="secondary">Secondary</Button>
+<Button variant="outline">Outline</Button>
+
+// With sizes
+<Button size="sm">Small</Button>
+<Button size="md">Medium</Button>
+<Button size="lg">Large</Button>
+
+// Custom styling
+<Button className="custom-class">Custom Button</Button>
 ```
 
-## 🛠️ Tech Stack
+## Adding New Components
 
-- **shadcn/ui**: Re-usable components built with Radix UI
-- **Radix UI**: Headless UI primitives
-- **Tailwind CSS**: Utility-first CSS framework
-- **TypeScript**: Type-safe component definitions
-- **class-variance-authority**: Component variant management
-- **clsx**: Conditional className utility
-- **tailwind-merge**: Tailwind class merging utility
+1. Create your component in `src/components/`
+2. Export it from `src/components/index.ts`
+3. Update this README with documentation
 
-## 📁 Project Structure
-
-```
-packages/ui/
-├── src/
-│   ├── components/         # Reusable UI components
-│   │   ├── button.tsx     # Button component
-│   │   ├── card.tsx       # Card component
-│   │   ├── input.tsx      # Input component
-│   │   └── index.ts       # Component exports
-│   ├── lib/
-│   │   ├── utils.ts       # Utility functions
-│   │   └── globals.css    # Global styles
-│   └── hooks/             # Custom React hooks
-├── package.json           # Package configuration
-├── components.json        # shadcn/ui configuration
-└── tsconfig.json          # TypeScript configuration
-```
-
-## 🎨 Available Components
-
-### Core Components
-
-| Component | Description                              | Usage                                                                                 |
-| --------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
-| `Button`  | Versatile button component with variants | `import { Button } from '@acme/ui/components/button'`                                 |
-| `Card`    | Container component for content          | `import { Card, CardContent, CardHeader, CardTitle } from '@acme/ui/components/card'` |
-| `Input`   | Form input component                     | `import { Input } from '@acme/ui/components/input'`                                   |
-| `Badge`   | Small status indicator                   | `import { Badge } from '@acme/ui/components/badge'`                                   |
-
-### Form Components
-
-| Component  | Description           | Usage                                                                                                        |
-| ---------- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
-| `Label`    | Form label component  | `import { Label } from '@acme/ui/components/label'`                                                          |
-| `Textarea` | Multi-line text input | `import { Textarea } from '@acme/ui/components/textarea'`                                                    |
-| `Select`   | Dropdown selection    | `import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@acme/ui/components/select'` |
-
-### Layout Components
-
-| Component     | Description           | Usage                                                            |
-| ------------- | --------------------- | ---------------------------------------------------------------- |
-| `Separator`   | Visual divider        | `import { Separator } from '@acme/ui/components/separator'`      |
-| `AspectRatio` | Maintain aspect ratio | `import { AspectRatio } from '@acme/ui/components/aspect-ratio'` |
-
-## 🔧 Adding New Components
-
-### Using shadcn/ui CLI
-
-```bash
-# Navigate to UI package
-cd packages/ui
-
-# Add new component
-pnpm ui:add button
-pnpm ui:add card
-pnpm ui:add input
-pnpm ui:add dialog
-pnpm ui:add dropdown-menu
-```
-
-### Manual Component Creation
-
-1. Create component file in `src/components/`
-2. Export from `src/components/index.ts`
-3. Update package.json exports if needed
+Example component structure:
 
 ```tsx
-// src/components/custom-component.tsx
-import * as React from "react";
-import { cva, type VariantProps } from "class-variance-authority";
+// src/components/my-component.tsx
+import React from "react";
 import { cn } from "../lib/utils";
 
-const customComponentVariants = cva(
-  "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
-  {
-    variants: {
-      variant: {
-        default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive:
-          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline:
-          "border border-input hover:bg-accent hover:text-accent-foreground",
-        secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
-        ghost: "hover:bg-accent hover:text-accent-foreground",
-        link: "underline-offset-4 hover:underline text-primary",
-      },
-      size: {
-        default: "h-10 py-2 px-4",
-        sm: "h-9 px-3 rounded-md",
-        lg: "h-11 px-8 rounded-md",
-        icon: "h-10 w-10",
-      },
-    },
-    defaultVariants: {
-      variant: "default",
-      size: "default",
-    },
-  }
-);
-
-export interface CustomComponentProps
-  extends React.HTMLAttributes<HTMLDivElement>,
-    VariantProps<typeof customComponentVariants> {}
-
-const CustomComponent = React.forwardRef<HTMLDivElement, CustomComponentProps>(
-  ({ className, variant, size, ...props }, ref) => {
-    return (
-      <div
-        className={cn(customComponentVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    );
-  }
-);
-CustomComponent.displayName = "CustomComponent";
-
-export { CustomComponent, customComponentVariants };
-```
-
-## 🎨 Styling
-
-### Tailwind CSS Integration
-
-The UI package uses Tailwind CSS for styling. Components are built with utility classes and CSS variables for theming:
-
-```css
-/* src/lib/globals.css */
-@import "tailwindcss";
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
+interface MyComponentProps {
+  // Define your props here
+  children: React.ReactNode;
+  variant?: "default" | "custom";
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
-  body {
-    @apply bg-background text-foreground;
-  }
-}
-```
-
-### Utility Functions
-
-```tsx
-// src/lib/utils.ts
-import { type ClassValue, clsx } from "clsx";
-import { twMerge } from "tailwind-merge";
-
-export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs));
-}
-```
-
-## 🔧 Configuration
-
-### shadcn/ui Configuration
-
-```json
-// components.json
-{
-  "$schema": "https://ui.shadcn.com/schema.json",
-  "style": "default",
-  "rsc": true,
-  "tsx": true,
-  "tailwind": {
-    "config": "tailwind.config.js",
-    "css": "src/lib/globals.css",
-    "baseColor": "slate",
-    "cssVariables": true,
-    "prefix": ""
-  },
-  "aliases": {
-    "components": "@/components",
-    "utils": "@/lib/utils"
-  }
-}
-```
-
-### Package Exports
-
-```json
-// package.json
-{
-  "exports": {
-    "./globals.css": "./src/lib/globals.css",
-    "./lib/*": "./src/lib/*.ts",
-    "./components/*": ["./src/components/*.tsx", "./src/components/*.ts"],
-    "./hooks/*": "./src/hooks/*.ts"
-  }
-}
-```
-
-## 📦 Dependencies
-
-### Core Dependencies
-
-- **React**: UI library
-- **class-variance-authority**: Component variant management
-- **clsx**: Conditional className utility
-- **tailwind-merge**: Tailwind class merging utility
-
-### UI Dependencies
-
-- **Radix UI**: Headless UI primitives
-- **Lucide React**: Icon library
-
-### Development Dependencies
-
-- **TypeScript**: Type checking
-- **ESLint**: Code linting
-
-## 🚀 Development Workflow
-
-### 1. Adding New Components
-
-```bash
-# Use shadcn/ui CLI
-cd packages/ui
-pnpm ui:add <component-name>
-
-# Or manually create component
-touch src/components/new-component.tsx
-```
-
-### 2. Testing Components
-
-```tsx
-// Test component in web app
-import { NewComponent } from "@acme/ui/components/new-component";
-
-export default function TestPage() {
+export const MyComponent: React.FC<MyComponentProps> = ({
+  children,
+  variant = "default",
+  ...props
+}) => {
+  // Component implementation
   return (
-    <div className="p-4">
-      <NewComponent>Test Content</NewComponent>
+    <div className={cn("base-styles", variant === "custom" && "custom-styles")}>
+      {children}
+    </div>
+  );
+};
+```
+
+## Utilities
+
+### cn (Class Names)
+
+A utility function for combining CSS classes:
+
+```tsx
+import { cn } from "@hastee-xplat/ui";
+
+const className = cn(
+  "base-class",
+  condition && "conditional-class",
+  "another-class"
+);
+```
+
+## Global Styles
+
+Import the global CSS file in your app:
+
+```tsx
+import "@hastee-xplat/ui/globals.css";
+```
+
+## Development
+
+### Scripts
+
+- `pnpm lint` - Run ESLint
+- `pnpm check-types` - Run TypeScript type checking
+
+### Project Structure
+
+```
+src/
+├── components/           # UI components
+│   ├── button.tsx       # Button component
+│   └── index.ts         # Export all components
+├── lib/                 # Utilities and helpers
+│   ├── utils.ts         # Utility functions
+│   └── globals.css      # Global styles
+└── index.ts             # Main entry point
+```
+
+## Usage in Apps
+
+### Web App (Next.js)
+
+```tsx
+import { Button } from "@hastee-xplat/ui";
+import "@hastee-xplat/ui/globals.css"; // Import global styles
+
+export default function Page() {
+  return (
+    <div>
+      <Button variant="primary">Get Started</Button>
     </div>
   );
 }
 ```
 
-### 3. Publishing Updates
+### Mobile App (Expo)
 
-```bash
-# Build the package
-pnpm build --filter=@acme/ui
+For React Native compatibility, you may need to create platform-specific versions of components or use styling solutions like NativeWind.
 
-# The changes are automatically available in the monorepo
-```
+## License
 
-## 🎯 Best Practices
-
-### Component Design
-
-1. **Use TypeScript**: All components should be fully typed
-2. **Follow shadcn/ui patterns**: Use consistent naming and structure
-3. **Support variants**: Use class-variance-authority for component variants
-4. **Accessibility**: Ensure components are accessible with proper ARIA attributes
-5. **Responsive**: Design components to work across different screen sizes
-
-### Code Style
-
-```tsx
-// Good: Proper TypeScript and accessibility
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?:
-    | "default"
-    | "destructive"
-    | "outline"
-    | "secondary"
-    | "ghost"
-    | "link";
-  size?: "default" | "sm" | "lg" | "icon";
-}
-
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, ...props }, ref) => {
-    return (
-      <button
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        {...props}
-      />
-    );
-  }
-);
-Button.displayName = "Button";
-```
-
-## 🔍 Troubleshooting
-
-### Common Issues
-
-**Component not found:**
-
-```bash
-# Rebuild the package
-pnpm build --filter=@acme/ui
-
-# Clear node_modules and reinstall
-pnpm clean
-pnpm install
-```
-
-**Styling issues:**
-
-```bash
-# Ensure globals.css is imported
-import '@acme/ui/globals.css'
-```
-
-**TypeScript errors:**
-
-```bash
-# Check types
-pnpm check-types --filter=@acme/ui
-```
-
-## 📚 Resources
-
-- [shadcn/ui Documentation](https://ui.shadcn.com/)
-- [Radix UI Documentation](https://www.radix-ui.com/)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [class-variance-authority](https://cva.style/docs)
-- [clsx Documentation](https://github.com/lukeed/clsx)
-
-## 🤝 Contributing
-
-1. Follow the established component patterns
-2. Ensure components are accessible
-3. Add proper TypeScript types
-4. Test components in both web and mobile apps
-5. Update documentation for new components
-
----
-
-Built with ❤️ using shadcn/ui, Radix UI, and Tailwind CSS
+MIT

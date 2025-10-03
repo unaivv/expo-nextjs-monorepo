@@ -1,7 +1,7 @@
 import { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  transpilePackages: ["@acme/ui"],
+  transpilePackages: ["@hastee-xplat/ui"],
 };
 
 export default nextConfig;

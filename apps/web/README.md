@@ -1,6 +1,6 @@
-# Acme Web App
+# Hastee Web App
 
-A modern Next.js 15 web application with vanilla CSS styling, custom UI components, and TypeScript.
+A modern Next.js 15 web application with custom UI components and TypeScript.
 
 ## 🚀 Quick Start
 
@@ -31,7 +31,7 @@ pnpm start
 - **Framework**: Next.js 15 with App Router
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS v4
-- **UI Components**: shadcn/ui (Radix UI + Tailwind)
+- **UI Components**: Custom UI library
 - **Package Manager**: pnpm
 - **Build Tool**: Turbopack (development)
 
@@ -44,7 +44,6 @@ apps/web/
 │   ├── page.tsx           # Home page
 │   └── globals.css        # Global styles
 ├── components/            # Web-specific components
-│   └── ui/               # shadcn/ui components
 ├── public/               # Static assets
 ├── package.json          # Dependencies and scripts
 ├── tailwind.config.js    # Tailwind CSS configuration
@@ -70,24 +69,19 @@ This project uses Tailwind CSS v4 with the latest features:
 }
 ```
 
-### shadcn/ui Components
+### Custom UI Components
 
-Pre-built, accessible components built with Radix UI and Tailwind CSS:
+Custom components built for your specific needs:
 
 ```tsx
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@hastee-xplat/ui";
 
 export default function Page() {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Welcome to Acme</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Button>Get Started</Button>
-      </CardContent>
-    </Card>
+    <div className="p-6">
+      <h1 className="text-2xl font-bold mb-4">Welcome to Hastee</h1>
+      <Button variant="primary">Get Started</Button>
+    </div>
   );
 }
 ```
@@ -160,12 +154,8 @@ module.exports = {
 
 ### UI Dependencies
 
-- **shadcn/ui**: Re-usable components
-- **Radix UI**: Headless UI primitives
-- **Lucide React**: Beautiful icons
-- **class-variance-authority**: Component variant management
-- **clsx**: Conditional className utility
-- **tailwind-merge**: Tailwind class merging utility
+- **@hastee-xplat/ui**: Custom UI component library
+- **Tailwind CSS**: Utility-first CSS framework
 
 ### Development Dependencies
 
@@ -192,21 +182,18 @@ export default function DashboardPage() {
 }
 ```
 
-### Adding shadcn/ui Components
+### Creating Custom Components
 
 ```bash
-# Add new components
-pnpm ui:add button
-pnpm ui:add card
-pnpm ui:add input
-pnpm ui:add dialog
+# Create components in the UI package
+cd packages/ui/src/components
+# Add your custom component files
 ```
 
 ### Using Shared UI Components
 
 ```tsx
-import { Button } from "@acme/ui/components/button";
-import { Card } from "@acme/ui/components/card";
+import { Button } from "@hastee-xplat/ui";
 
 // Use shared components from the monorepo
 ```
@@ -335,8 +322,6 @@ pnpm build
 
 - [Next.js Documentation](https://nextjs.org/docs)
 - [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [shadcn/ui Documentation](https://ui.shadcn.com/)
-- [Radix UI Documentation](https://www.radix-ui.com/)
 - [TypeScript Documentation](https://www.typescriptlang.org/docs/)
 
 ## 🤝 Contributing
@@ -348,4 +333,4 @@ pnpm build
 
 ---
 
-Built with ❤️ using Next.js 15, Tailwind CSS v4, and shadcn/ui
+Built with ❤️ using Next.js 15, Tailwind CSS v4, and custom UI components
