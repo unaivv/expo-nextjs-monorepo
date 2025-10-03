@@ -1,4 +1,14 @@
 {
-  "compilerOptions": {},
-  "extends": "expo/tsconfig.base"
+  "extends": "./tooling/typescript/base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@hastee-xplat/ui": ["./packages/ui/src"],
+      "@hastee-xplat/ui/*": ["./packages/ui/src/*"],
+      "@hastee-xplat/auth": ["./packages/auth"],
+      "@hastee-xplat/db": ["./packages/db/src"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
+  "exclude": ["node_modules", "dist", ".next", ".turbo", "build"]
 }
