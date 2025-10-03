@@ -1,0 +1,22 @@
+{
+  "name": "@hastee-xplat/api",
+  "version": "0.1.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "scripts": {
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@hastee-xplat/eslint": "workspace:*",
+    "@hastee-xplat/typescript": "workspace:*",
+    "@types/node": "^22.15.3"
+  },
+  "main": "./src/client.ts",
+  "exports": {
+    ".": "./src/client.ts",
+    "./client": "./src/client.ts",
+    "./auth": "./src/auth/index.ts"
+  }
+}

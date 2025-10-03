@@ -4,9 +4,10 @@ A modern monorepo skeleton for building with web and mobile applications. Built 
 
 ## 🚀 Features
 
-- **🔐 Authentication**: Powered by [Better Auth](https://www.better-auth.com/) for secure, cross-platform sign-in/sign-up
+- **🌐 HTTP Client**: Generic API client for all backend communications
+- **🔐 Authentication**: Flexible auth module with external token support (Google, Facebook, etc.)
 - **📱 Cross-Platform**: Web (Next.js 15) + Mobile (Expo 53)
-- **🎨 Modern UI**: Custom UI components + Tailwind CSS v4 (web) + NativeWind v4 (mobile)
+- **🎨 Modern UI**: Custom UI component library with modular architecture
 - **⚡ Fast Development**: Turborepo for blazing-fast builds and caching
 - **🔧 Type Safety**: Full TypeScript support across all packages
 - **📦 Package Manager**: pnpm with efficient workspace management
@@ -50,10 +51,15 @@ expo-nextjs-monorepo/
 │       ├── components/     # Mobile-specific components
 │       └── package.json
 ├── packages/
-│   └── ui/                 # Shared UI component library
+│   ├── ui/                 # Custom UI component library
+│   │   ├── src/
+│   │   │   ├── components/ # Modular components (Button, etc.)
+│   │   │   └── lib/        # Utilities and styles
+│   │   └── package.json
+│   └── api/                # HTTP client and auth module
 │       ├── src/
-│       │   ├── components/ # Reusable components
-│       │   └── lib/        # Utilities and styles
+│       │   ├── client.ts   # Generic HTTP client (GET, POST, etc.)
+│       │   └── auth/       # Auth module with external token support
 │       └── package.json
 ├── tooling/
 │   ├── eslint/             # Shared ESLint configurations
@@ -166,28 +172,44 @@ pnpm dev --filter=mobile -- --android
 pnpm dev --filter=mobile -- --web
 ```
 
-## 🔐 Authentication (Better Auth)
+## 🌐 API Client & Authentication
 
-This monorepo uses [Better Auth](https://www.better-auth.com/) for secure, production-ready authentication across both web (Next.js) and mobile (Expo).
+This monorepo includes a custom API client (`@hastee-xplat/api`) for all backend communications and flexible authentication.
 
-### Overview
+### API Client Features
 
-- **Web (Next.js):**  
-  Better Auth is fully integrated via API routes. Sign in and sign up are supported out of the box.
+- **Generic HTTP Methods**: GET, POST, PUT, PATCH, DELETE
+- **Error Handling**: Comprehensive error responses with status codes
+- **Token Management**: Automatic token handling for authenticated requests
+- **Timeout Control**: Configurable request timeouts
+- **Cross-Platform**: Works in both Next.js and React Native
 
-- **Mobile (Expo):**
-  - For native mobile, the auth client is configured to point to your deployed or local Next.js API backend (using your computer’s LAN IP for local development).
-  - Make sure your device and computer are on the same Wi-Fi network for local testing.
-  - Expo API routes are available for web, but native mobile must use a real backend server.
+### Authentication Module
 
-- **Production Ready:**
-  - The authentication flow is stable and ready for production use on both platforms.
-  - Supports secure session management, social login, and more (see Better Auth docs).
+- **Traditional Login**: Email/password authentication
+- **External Token Auth**: Google, Facebook, GitHub, custom providers
+- **JWT Support**: Custom token validation and management
+- **Session Management**: Token refresh and logout functionality
+
+### Usage Examples
+
+```typescript
+import { apiClient } from '@hastee-xplat/api/client';
+import { authClient } from '@hastee-xplat/api/auth';
+
+// Generic API calls
+const users = await apiClient.get('/users');
+const newUser = await apiClient.post('/users', userData);
+
+// Authentication
+const loginResponse = await authClient.login({ email, password });
+const googleAuth = await authClient.loginWithGoogle(googleToken);
+```
 
 ### References
 
-- [Better Auth Expo Integration Guide](https://www.better-auth.com/docs/integrations/expo)
-- [Expo API Routes Limitations](https://docs.expo.dev/router/reference/api-routes/)
+- [API Package Documentation](./packages/api/README.md)
+- [Usage Examples](./packages/api/EXAMPLES.md)
 
 ---
 

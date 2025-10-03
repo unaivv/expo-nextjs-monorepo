@@ -11,7 +11,7 @@
     "lint": "expo lint"
   },
   "dependencies": {
-    "@hastee-xplat/auth": "workspace:*",
+    "@hastee-xplat/api": "workspace:*",
     "@hastee-xplat/ui": "workspace:*",
     "expo": "~54.0.12",
     "expo-constants": "~18.0.9",
