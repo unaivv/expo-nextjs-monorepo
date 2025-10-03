@@ -1,5 +1,5 @@
 {
-  "name": "mobile",
+  "name": "@hastee-xplat/mobile",
   "main": "expo-router/entry",
   "version": "1.0.0",
   "scripts": {
@@ -11,8 +11,8 @@
     "lint": "expo lint"
   },
   "dependencies": {
-    "@acme/auth": "workspace:*",
-    "@acme/ui": "workspace:*",
+    "@hastee-xplat/auth": "workspace:*",
+    "@hastee-xplat/ui": "workspace:*",
     "expo": "~54.0.12",
     "expo-constants": "~18.0.9",
     "expo-linking": "~8.0.8",

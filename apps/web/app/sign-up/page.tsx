@@ -1,6 +1,6 @@
 "use client";
 
-import { Button } from "@acme/ui/components/button";
+import { Button } from "@hastee-xplat/ui/components/button";
 import {
   Card,
   CardContent,
@@ -8,9 +8,9 @@ import {
   CardFooter,
   CardHeader,
   CardTitle,
-} from "@acme/ui/components/card";
-import { Input } from "@acme/ui/components/input";
-import { Label } from "@acme/ui/components/label";
+} from "@hastee-xplat/ui/components/card";
+import { Input } from "@hastee-xplat/ui/components/input";
+import { Label } from "@hastee-xplat/ui/components/label";
 import { useState } from "react";
 import Image from "next/image";
 import { Loader2, X } from "lucide-react";

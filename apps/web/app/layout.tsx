@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import "@acme/ui/globals.css";
+import "@hastee-xplat/ui/globals.css";
 
 export const metadata: Metadata = {
   title: "Create Next App",

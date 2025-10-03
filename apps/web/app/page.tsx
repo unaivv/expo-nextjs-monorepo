@@ -1,16 +1,16 @@
 "use client";
 
-import { Button } from "@acme/ui/components/button";
+import { Button } from "@hastee-xplat/ui/components/button";
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
   CardDescription,
-} from "@acme/ui/components/card";
-import { Input } from "@acme/ui/components/input";
-import { Label } from "@acme/ui/components/label";
-import { Checkbox } from "@acme/ui/components/checkbox";
+} from "@hastee-xplat/ui/components/card";
+import { Input } from "@hastee-xplat/ui/components/input";
+import { Label } from "@hastee-xplat/ui/components/label";
+import { Checkbox } from "@hastee-xplat/ui/components/checkbox";
 import { useState } from "react";
 import { Loader2 } from "lucide-react";
 import { authClient } from "../lib/auth-client";

@@ -20,10 +20,10 @@ importers:
 
   apps/mobile:
     dependencies:
-      '@acme/auth':
+      '@hastee-xplat/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@acme/ui':
+      '@hastee-xplat/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       expo:
@@ -72,10 +72,10 @@ importers:
 
   apps/web:
     dependencies:
-      '@acme/auth':
+      '@hastee-xplat/auth':
         specifier: workspace:*
         version: link:../../packages/auth
-      '@acme/ui':
+      '@hastee-xplat/ui':
         specifier: workspace:*
         version: link:../../packages/ui
       '@types/pg':
@@ -97,10 +97,10 @@ importers:
         specifier: ^19.0.0
         version: 19.0.0(react@19.0.0)
     devDependencies:
-      '@acme/eslint':
+      '@hastee-xplat/eslint':
         specifier: workspace:*
         version: link:../../tooling/eslint
-      '@acme/typescript':
+      '@hastee-xplat/typescript':
         specifier: workspace:*
         version: link:../../tooling/typescript
       '@types/node':
@@ -131,10 +131,10 @@ importers:
         specifier: ^8.16.3
         version: 8.16.3
     devDependencies:
-      '@acme/eslint':
+      '@hastee-xplat/eslint':
         specifier: workspace:*
         version: link:../../tooling/eslint
-      '@acme/typescript':
+      '@hastee-xplat/typescript':
         specifier: workspace:*
         version: link:../../tooling/typescript
       '@types/node':
@@ -146,7 +146,7 @@ importers:
 
   packages/db:
     devDependencies:
-      '@acme/eslint':
+      '@hastee-xplat/eslint':
         specifier: workspace:*
         version: link:../../tooling/eslint
 
@@ -177,10 +177,10 @@ importers:
         specifier: 19.1.0
         version: 19.1.0(react@19.1.0)
     devDependencies:
-      '@acme/eslint':
+      '@hastee-xplat/eslint':
         specifier: workspace:*
         version: link:../../tooling/eslint
-      '@acme/typescript':
+      '@hastee-xplat/typescript':
         specifier: workspace:*
         version: link:../../tooling/typescript
       '@types/node':
