@@ -42,23 +42,23 @@ Example component structure:
 
 ```tsx
 // src/components/my-component.tsx
-import React from "react";
-import { cn } from "../lib/utils";
+import React from 'react';
+import { cn } from '../lib/utils';
 
 interface MyComponentProps {
   // Define your props here
   children: React.ReactNode;
-  variant?: "default" | "custom";
+  variant?: 'default' | 'custom';
 }
 
 export const MyComponent: React.FC<MyComponentProps> = ({
   children,
-  variant = "default",
+  variant = 'default',
   ...props
 }) => {
   // Component implementation
   return (
-    <div className={cn("base-styles", variant === "custom" && "custom-styles")}>
+    <div className={cn('base-styles', variant === 'custom' && 'custom-styles')}>
       {children}
     </div>
   );
@@ -72,12 +72,12 @@ export const MyComponent: React.FC<MyComponentProps> = ({
 A utility function for combining CSS classes:
 
 ```tsx
-import { cn } from "@hastee-xplat/ui";
+import { cn } from '@hastee-xplat/ui';
 
 const className = cn(
-  "base-class",
-  condition && "conditional-class",
-  "another-class"
+  'base-class',
+  condition && 'conditional-class',
+  'another-class'
 );
 ```
 
@@ -86,7 +86,7 @@ const className = cn(
 Import the global CSS file in your app:
 
 ```tsx
-import "@hastee-xplat/ui/globals.css";
+import '@hastee-xplat/ui/globals.css';
 ```
 
 ## Development
@@ -114,8 +114,8 @@ src/
 ### Web App (Next.js)
 
 ```tsx
-import { Button } from "@hastee-xplat/ui";
-import "@hastee-xplat/ui/globals.css"; // Import global styles
+import { Button } from '@hastee-xplat/ui';
+import '@hastee-xplat/ui/globals.css'; // Import global styles
 
 export default function Page() {
   return (

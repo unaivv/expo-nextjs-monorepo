@@ -200,7 +200,7 @@ The `packages/ui` package contains reusable components that work across web and 
 **Usage:**
 
 ```tsx
-import { Button } from "@hastee-xplat/ui/components/button";
+import { Button } from '@hastee-xplat/ui/components/button';
 
 // Use in both web and mobile apps
 ```

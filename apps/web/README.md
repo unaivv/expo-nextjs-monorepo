@@ -58,7 +58,7 @@ This project uses Tailwind CSS v4 with the latest features:
 
 ```css
 /* app/globals.css */
-@import "tailwindcss";
+@import 'tailwindcss';
 
 /* Custom styles */
 @layer base {
@@ -74,7 +74,7 @@ This project uses Tailwind CSS v4 with the latest features:
 Custom components built for your specific needs:
 
 ```tsx
-import { Button } from "@hastee-xplat/ui";
+import { Button } from '@hastee-xplat/ui';
 
 export default function Page() {
   return (
@@ -92,15 +92,15 @@ export default function Page() {
 
 ```typescript
 // next.config.ts
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
 
 const nextConfig: NextConfig = {
   experimental: {
     turbo: {
       rules: {
-        "*.svg": {
-          loaders: ["@svgr/webpack"],
-          as: "*.js",
+        '*.svg': {
+          loaders: ['@svgr/webpack'],
+          as: '*.js',
         },
       },
     },
@@ -116,30 +116,30 @@ export default nextConfig;
 // tailwind.config.js
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  darkMode: ["class"],
+  darkMode: ['class'],
   content: [
-    "./pages/**/*.{ts,tsx}",
-    "./components/**/*.{ts,tsx}",
-    "./app/**/*.{ts,tsx}",
-    "./src/**/*.{ts,tsx}",
+    './pages/**/*.{ts,tsx}',
+    './components/**/*.{ts,tsx}',
+    './app/**/*.{ts,tsx}',
+    './src/**/*.{ts,tsx}',
   ],
   theme: {
     extend: {
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        border: 'hsl(var(--border))',
+        input: 'hsl(var(--input))',
+        ring: 'hsl(var(--ring))',
+        background: 'hsl(var(--background))',
+        foreground: 'hsl(var(--foreground))',
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
         },
         // ... more color variables
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require('tailwindcss-animate')],
 };
 ```
 
@@ -193,7 +193,7 @@ cd packages/ui/src/components
 ### Using Shared UI Components
 
 ```tsx
-import { Button } from "@hastee-xplat/ui";
+import { Button } from '@hastee-xplat/ui';
 
 // Use shared components from the monorepo
 ```

@@ -57,10 +57,10 @@ import { Button } from '@hastee-xplat/ui';
 ## Type Usage
 
 ```tsx
-import type { ButtonProps, ButtonVariant, ButtonSize } from "@hastee-xplat/ui";
+import type { ButtonProps, ButtonVariant, ButtonSize } from '@hastee-xplat/ui';
 
 // Use types in your own components
-const MyButton: React.FC<ButtonProps> = (props) => {
+const MyButton: React.FC<ButtonProps> = props => {
   return <Button {...props} />;
 };
 ```
@@ -77,11 +77,11 @@ Example adding a new variant:
 
 ```tsx
 // types.ts
-export type ButtonVariant = "primary" | "secondary" | "outline" | "danger";
+export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'danger';
 
 // styles.ts
 variants: {
   // ... existing variants
-  danger: "bg-red-600 text-white hover:bg-red-700 focus:ring-red-500";
+  danger: 'bg-red-600 text-white hover:bg-red-700 focus:ring-red-500';
 }
 ```

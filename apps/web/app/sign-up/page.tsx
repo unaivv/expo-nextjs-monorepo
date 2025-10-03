@@ -1,17 +1,17 @@
-"use client";
+'use client';
 
-import { Button } from "@hastee-xplat/ui";
-import { useState } from "react";
-import Image from "next/image";
-import { authClient } from "../../lib/auth-client";
-import { useRouter } from "next/navigation";
+import { Button } from '@hastee-xplat/ui';
+import { useState } from 'react';
+import Image from 'next/image';
+import { authClient } from '../../lib/auth-client';
+import { useRouter } from 'next/navigation';
 
 export default function SignUp() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  const [firstName, setFirstName] = useState('');
+  const [lastName, setLastName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [passwordConfirmation, setPasswordConfirmation] = useState('');
   const [image, setImage] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -34,13 +34,18 @@ export default function SignUp() {
       <div className="bg-white p-8 rounded-lg shadow-md w-full max-w-md">
         <div className="text-center mb-6">
           <h1 className="text-2xl font-bold text-gray-900">Create Account</h1>
-          <p className="text-gray-600 mt-2">Enter your information to sign up</p>
+          <p className="text-gray-600 mt-2">
+            Enter your information to sign up
+          </p>
         </div>
 
         <form className="space-y-4">
           <div className="grid grid-cols-2 gap-4">
             <div>
-              <label htmlFor="first-name" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="first-name"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 First name
               </label>
               <input
@@ -49,11 +54,14 @@ export default function SignUp() {
                 placeholder="Max"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
+                onChange={e => setFirstName(e.target.value)}
               />
             </div>
             <div>
-              <label htmlFor="last-name" className="block text-sm font-medium text-gray-700 mb-1">
+              <label
+                htmlFor="last-name"
+                className="block text-sm font-medium text-gray-700 mb-1"
+              >
                 Last name
               </label>
               <input
@@ -62,13 +70,16 @@ export default function SignUp() {
                 placeholder="Robinson"
                 className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                 value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
+                onChange={e => setLastName(e.target.value)}
               />
             </div>
           </div>
 
           <div>
-            <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Email
             </label>
             <input
@@ -77,12 +88,15 @@ export default function SignUp() {
               placeholder="m@example.com"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={e => setEmail(e.target.value)}
             />
           </div>
 
           <div>
-            <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="password"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Password
             </label>
             <input
@@ -91,12 +105,15 @@ export default function SignUp() {
               placeholder="Password"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={e => setPassword(e.target.value)}
             />
           </div>
 
           <div>
-            <label htmlFor="password-confirmation" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="password-confirmation"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Confirm Password
             </label>
             <input
@@ -105,12 +122,15 @@ export default function SignUp() {
               placeholder="Confirm Password"
               className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
               value={passwordConfirmation}
-              onChange={(e) => setPasswordConfirmation(e.target.value)}
+              onChange={e => setPasswordConfirmation(e.target.value)}
             />
           </div>
 
           <div>
-            <label htmlFor="image" className="block text-sm font-medium text-gray-700 mb-1">
+            <label
+              htmlFor="image"
+              className="block text-sm font-medium text-gray-700 mb-1"
+            >
               Profile Image (optional)
             </label>
             <div className="flex items-end gap-4">
@@ -158,18 +178,18 @@ export default function SignUp() {
                 email,
                 password,
                 name: `${firstName} ${lastName}`,
-                image: image ? await convertImageToBase64(image) : "",
-                callbackURL: "/dashboard",
+                image: image ? await convertImageToBase64(image) : '',
+                callbackURL: '/dashboard',
                 fetchOptions: {
                   onRequest: () => setLoading(true),
                   onResponse: () => setLoading(false),
-                  onError: (ctx) => console.error(ctx.error.message),
-                  onSuccess: () => router.push("/dashboard"),
+                  onError: ctx => console.error(ctx.error.message),
+                  onSuccess: () => router.push('/dashboard'),
                 },
               });
             }}
           >
-            {loading ? "Creating account..." : "Create account"}
+            {loading ? 'Creating account...' : 'Create account'}
           </Button>
         </form>
 

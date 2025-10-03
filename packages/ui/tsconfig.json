@@ -3,17 +3,10 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@hastee-xplat/*": [
-        "./src/*"
-      ]
+      "@hastee-xplat/*": ["./src/*"]
     },
     "jsx": "react-jsx"
   },
-  "include": [
-    "."
-  ],
-  "exclude": [
-    "node_modules",
-    "dist"
-  ]
+  "include": ["."],
+  "exclude": ["node_modules", "dist"]
 }

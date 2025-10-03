@@ -6,11 +6,14 @@ export default function App() {
     <View style={styles.container}>
       <Text style={styles.title}>Welcome to Expo SDK 54!</Text>
       <Text style={styles.subtitle}>Mobile app with shared packages</Text>
-      
+
       <View style={styles.buttonContainer}>
-        <Button title="Test Button" onPress={() => console.log('Button pressed')} />
+        <Button
+          title="Test Button"
+          onPress={() => console.log('Button pressed')}
+        />
       </View>
-      
+
       <StatusBar style="auto" />
     </View>
   );

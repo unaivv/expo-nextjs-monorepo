@@ -1,6 +1,6 @@
-import { betterAuth } from "better-auth";
-import { expo } from "@better-auth/expo";
-import { Pool } from "pg";
+import { betterAuth } from 'better-auth';
+import { expo } from '@better-auth/expo';
+import { Pool } from 'pg';
 
 export const createAuth = (databaseUrl: string) => {
   return betterAuth({
@@ -11,6 +11,6 @@ export const createAuth = (databaseUrl: string) => {
       enabled: true,
     },
     plugins: [expo()],
-    trustedOrigins: ["expo://", "mobile://", "exp://", "http://localhost:3000"],
+    trustedOrigins: ['expo://', 'mobile://', 'exp://', 'http://localhost:3000'],
   });
 };
