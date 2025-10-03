@@ -1,6 +1,6 @@
 # Acme UI Package
 
-A shared UI component library for the Acme monorepo. Built with shadcn/ui, Radix UI, and Tailwind CSS for consistent design across web and mobile applications.
+A shared UI component library for the Acme monorepo. Built with Radix UI primitives and vanilla CSS for consistent design across web and mobile applications.
 
 ## 🚀 Quick Start
 
@@ -17,12 +17,22 @@ The UI package is automatically available in the monorepo workspace:
 
 ```tsx
 // In web app (apps/web/)
-import { Button } from '@acme/ui/components/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@acme/ui/components/card'
+import { Button } from "@acme/ui/components/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@acme/ui/components/card";
 
 // In mobile app (apps/mobile/)
-import { Button } from '@acme/ui/components/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@acme/ui/components/card'
+import { Button } from "@acme/ui/components/button";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@acme/ui/components/card";
 ```
 
 ## 🛠️ Tech Stack
@@ -58,26 +68,26 @@ packages/ui/
 
 ### Core Components
 
-| Component | Description | Usage |
-|-----------|-------------|-------|
-| `Button` | Versatile button component with variants | `import { Button } from '@acme/ui/components/button'` |
-| `Card` | Container component for content | `import { Card, CardContent, CardHeader, CardTitle } from '@acme/ui/components/card'` |
-| `Input` | Form input component | `import { Input } from '@acme/ui/components/input'` |
-| `Badge` | Small status indicator | `import { Badge } from '@acme/ui/components/badge'` |
+| Component | Description                              | Usage                                                                                 |
+| --------- | ---------------------------------------- | ------------------------------------------------------------------------------------- |
+| `Button`  | Versatile button component with variants | `import { Button } from '@acme/ui/components/button'`                                 |
+| `Card`    | Container component for content          | `import { Card, CardContent, CardHeader, CardTitle } from '@acme/ui/components/card'` |
+| `Input`   | Form input component                     | `import { Input } from '@acme/ui/components/input'`                                   |
+| `Badge`   | Small status indicator                   | `import { Badge } from '@acme/ui/components/badge'`                                   |
 
 ### Form Components
 
-| Component | Description | Usage |
-|-----------|-------------|-------|
-| `Label` | Form label component | `import { Label } from '@acme/ui/components/label'` |
-| `Textarea` | Multi-line text input | `import { Textarea } from '@acme/ui/components/textarea'` |
-| `Select` | Dropdown selection | `import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@acme/ui/components/select'` |
+| Component  | Description           | Usage                                                                                                        |
+| ---------- | --------------------- | ------------------------------------------------------------------------------------------------------------ |
+| `Label`    | Form label component  | `import { Label } from '@acme/ui/components/label'`                                                          |
+| `Textarea` | Multi-line text input | `import { Textarea } from '@acme/ui/components/textarea'`                                                    |
+| `Select`   | Dropdown selection    | `import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@acme/ui/components/select'` |
 
 ### Layout Components
 
-| Component | Description | Usage |
-|-----------|-------------|-------|
-| `Separator` | Visual divider | `import { Separator } from '@acme/ui/components/separator'` |
+| Component     | Description           | Usage                                                            |
+| ------------- | --------------------- | ---------------------------------------------------------------- |
+| `Separator`   | Visual divider        | `import { Separator } from '@acme/ui/components/separator'`      |
 | `AspectRatio` | Maintain aspect ratio | `import { AspectRatio } from '@acme/ui/components/aspect-ratio'` |
 
 ## 🔧 Adding New Components
@@ -104,9 +114,9 @@ pnpm ui:add dropdown-menu
 
 ```tsx
 // src/components/custom-component.tsx
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
-import { cn } from "../lib/utils"
+import * as React from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { cn } from "../lib/utils";
 
 const customComponentVariants = cva(
   "inline-flex items-center justify-center rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none ring-offset-background",
@@ -114,9 +124,12 @@ const customComponentVariants = cva(
     variants: {
       variant: {
         default: "bg-primary text-primary-foreground hover:bg-primary/90",
-        destructive: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-        outline: "border border-input hover:bg-accent hover:text-accent-foreground",
-        secondary: "bg-secondary text-secondary-foreground hover:bg-secondary/80",
+        destructive:
+          "bg-destructive text-destructive-foreground hover:bg-destructive/90",
+        outline:
+          "border border-input hover:bg-accent hover:text-accent-foreground",
+        secondary:
+          "bg-secondary text-secondary-foreground hover:bg-secondary/80",
         ghost: "hover:bg-accent hover:text-accent-foreground",
         link: "underline-offset-4 hover:underline text-primary",
       },
@@ -132,7 +145,7 @@ const customComponentVariants = cva(
       size: "default",
     },
   }
-)
+);
 
 export interface CustomComponentProps
   extends React.HTMLAttributes<HTMLDivElement>,
@@ -146,12 +159,12 @@ const CustomComponent = React.forwardRef<HTMLDivElement, CustomComponentProps>(
         ref={ref}
         {...props}
       />
-    )
+    );
   }
-)
-CustomComponent.displayName = "CustomComponent"
+);
+CustomComponent.displayName = "CustomComponent";
 
-export { CustomComponent, customComponentVariants }
+export { CustomComponent, customComponentVariants };
 ```
 
 ## 🎨 Styling
@@ -225,11 +238,11 @@ The UI package uses Tailwind CSS for styling. Components are built with utility 
 
 ```tsx
 // src/lib/utils.ts
-import { type ClassValue, clsx } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { type ClassValue, clsx } from "clsx";
+import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 ```
 
@@ -266,10 +279,7 @@ export function cn(...inputs: ClassValue[]) {
   "exports": {
     "./globals.css": "./src/lib/globals.css",
     "./lib/*": "./src/lib/*.ts",
-    "./components/*": [
-      "./src/components/*.tsx",
-      "./src/components/*.ts"
-    ],
+    "./components/*": ["./src/components/*.tsx", "./src/components/*.ts"],
     "./hooks/*": "./src/hooks/*.ts"
   }
 }
@@ -311,14 +321,14 @@ touch src/components/new-component.tsx
 
 ```tsx
 // Test component in web app
-import { NewComponent } from '@acme/ui/components/new-component'
+import { NewComponent } from "@acme/ui/components/new-component";
 
 export default function TestPage() {
   return (
     <div className="p-4">
       <NewComponent>Test Content</NewComponent>
     </div>
-  )
+  );
 }
 ```
 
@@ -346,8 +356,14 @@ pnpm build --filter=@acme/ui
 ```tsx
 // Good: Proper TypeScript and accessibility
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'default' | 'destructive' | 'outline' | 'secondary' | 'ghost' | 'link'
-  size?: 'default' | 'sm' | 'lg' | 'icon'
+  variant?:
+    | "default"
+    | "destructive"
+    | "outline"
+    | "secondary"
+    | "ghost"
+    | "link";
+  size?: "default" | "sm" | "lg" | "icon";
 }
 
 const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
@@ -358,10 +374,10 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         {...props}
       />
-    )
+    );
   }
-)
-Button.displayName = "Button"
+);
+Button.displayName = "Button";
 ```
 
 ## 🔍 Troubleshooting
@@ -369,6 +385,7 @@ Button.displayName = "Button"
 ### Common Issues
 
 **Component not found:**
+
 ```bash
 # Rebuild the package
 pnpm build --filter=@acme/ui
@@ -379,12 +396,14 @@ pnpm install
 ```
 
 **Styling issues:**
+
 ```bash
 # Ensure globals.css is imported
 import '@acme/ui/globals.css'
 ```
 
 **TypeScript errors:**
+
 ```bash
 # Check types
 pnpm check-types --filter=@acme/ui
@@ -408,4 +427,4 @@ pnpm check-types --filter=@acme/ui
 
 ---
 
-Built with ❤️ using shadcn/ui, Radix UI, and Tailwind CSS 
+Built with ❤️ using shadcn/ui, Radix UI, and Tailwind CSS

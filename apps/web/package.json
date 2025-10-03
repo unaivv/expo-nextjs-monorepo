@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@acme/auth": "workspace:*",
-    "@acme/tailwind": "workspace:*",
     "@acme/ui": "workspace:*",
     "@types/pg": "^8.15.4",
     "lucide-react": "^0.525.0",

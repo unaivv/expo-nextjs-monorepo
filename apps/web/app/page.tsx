@@ -23,17 +23,26 @@ export default function SignIn() {
   const [rememberMe, setRememberMe] = useState(false);
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <Card className="min-w-md">
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+    }}>
+      <Card style={{ minWidth: '384px' }}>
         <CardHeader>
-          <CardTitle className="text-lg md:text-xl">Sign In</CardTitle>
-          <CardDescription className="text-xs md:text-sm">
+          <CardTitle style={{ 
+            fontSize: '20px',
+          }}>Sign In</CardTitle>
+          <CardDescription style={{ 
+            fontSize: '14px',
+          }}>
             Enter your email below to login to your account
           </CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="grid gap-4">
-            <div className="grid gap-2">
+          <div style={{ display: 'grid', gap: '16px' }}>
+            <div style={{ display: 'grid', gap: '8px' }}>
               <Label htmlFor="email">Email</Label>
               <Input
                 id="email"
@@ -47,12 +56,17 @@ export default function SignIn() {
               />
             </div>
 
-            <div className="grid gap-2">
-              <div className="flex items-center">
+            <div style={{ display: 'grid', gap: '8px' }}>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
                 <Label htmlFor="password">Password</Label>
                 <Link
                   href="#"
-                  className="ml-auto inline-block text-sm underline"
+                  style={{
+                    marginLeft: 'auto',
+                    display: 'inline-block',
+                    fontSize: '14px',
+                    textDecoration: 'underline',
+                  }}
                 >
                   Forgot your password?
                 </Link>
@@ -68,7 +82,7 @@ export default function SignIn() {
               />
             </div>
 
-            <div className="flex items-center gap-2">
+            <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
               <Checkbox
                 id="remember"
                 onClick={() => {
@@ -80,7 +94,7 @@ export default function SignIn() {
 
             <Button
               type="submit"
-              className="w-full"
+              style={{ width: '100%' }}
               disabled={loading}
               onClick={async () => {
                 await authClient.signIn.email(
@@ -89,10 +103,10 @@ export default function SignIn() {
                     password,
                   },
                   {
-                    onRequest: (ctx) => {
+                    onRequest: () => {
                       setLoading(true);
                     },
-                    onResponse: (ctx) => {
+                    onResponse: () => {
                       setLoading(false);
                     },
                   }
@@ -100,7 +114,7 @@ export default function SignIn() {
               }}
             >
               {loading ? (
-                <Loader2 size={16} className="animate-spin" />
+                <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} />
               ) : (
                 <p> Login </p>
               )}

@@ -53,20 +53,33 @@ export default function SignUp() {
   };
 
   return (
-    <div className="flex justify-center items-center h-screen">
-      <Card className="z-50 rounded-md rounded-t-none min-w-md">
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+    }}>
+      <Card style={{ 
+        zIndex: 50,
+        borderRadius: '6px',
+        minWidth: '384px',
+      }}>
         <CardHeader>
-          <CardTitle className="text-lg md:text-xl">Sign Up</CardTitle>
+          <CardTitle style={{
+            fontSize: '20px',
+          }}>Sign Up</CardTitle>
 
-          <CardDescription className="text-xs md:text-sm">
+          <CardDescription style={{
+            fontSize: '14px',
+          }}>
             Enter your information to create an account
           </CardDescription>
         </CardHeader>
 
         <CardContent>
-          <div className="grid gap-4">
-            <div className="grid grid-cols-2 gap-4">
-              <div className="grid gap-2">
+          <div style={{ display: 'grid', gap: '16px' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
+              <div style={{ display: 'grid', gap: '8px' }}>
                 <Label htmlFor="first-name">First name</Label>
 
                 <Input
@@ -80,7 +93,7 @@ export default function SignUp() {
                 />
               </div>
 
-              <div className="grid gap-2">
+              <div style={{ display: 'grid', gap: '8px' }}>
                 <Label htmlFor="last-name">Last name</Label>
 
                 <Input
@@ -95,7 +108,7 @@ export default function SignUp() {
               </div>
             </div>
 
-            <div className="grid gap-2">
+            <div style={{ display: 'grid', gap: '8px' }}>
               <Label htmlFor="email">Email</Label>
 
               <Input
@@ -110,7 +123,7 @@ export default function SignUp() {
               />
             </div>
 
-            <div className="grid gap-2">
+            <div style={{ display: 'grid', gap: '8px' }}>
               <Label htmlFor="password">Password</Label>
 
               <Input
@@ -123,7 +136,7 @@ export default function SignUp() {
               />
             </div>
 
-            <div className="grid gap-2">
+            <div style={{ display: 'grid', gap: '8px' }}>
               <Label htmlFor="password">Confirm Password</Label>
 
               <Input
@@ -136,12 +149,18 @@ export default function SignUp() {
               />
             </div>
 
-            <div className="grid gap-2">
+            <div style={{ display: 'grid', gap: '8px' }}>
               <Label htmlFor="image">Profile Image (optional)</Label>
 
-              <div className="flex items-end gap-4">
+              <div style={{ display: 'flex', alignItems: 'end', gap: '16px' }}>
                 {imagePreview && (
-                  <div className="relative w-16 h-16 rounded-sm overflow-hidden">
+                  <div style={{
+                    position: 'relative',
+                    width: '64px',
+                    height: '64px',
+                    borderRadius: '4px',
+                    overflow: 'hidden',
+                  }}>
                     <Image
                       src={imagePreview}
                       alt="Profile preview"
@@ -151,18 +170,18 @@ export default function SignUp() {
                   </div>
                 )}
 
-                <div className="flex items-center gap-2 w-full">
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', width: '100%' }}>
                   <Input
                     id="image"
                     type="file"
                     accept="image/*"
                     onChange={handleImageChange}
-                    className="w-full"
+                    style={{ width: '100%' }}
                   />
 
                   {imagePreview && (
                     <X
-                      className="cursor-pointer"
+                      style={{ cursor: 'pointer' }}
                       onClick={() => {
                         setImage(null);
 
@@ -176,7 +195,7 @@ export default function SignUp() {
 
             <Button
               type="submit"
-              className="w-full"
+              style={{ width: '100%' }}
               disabled={loading}
               onClick={async () => {
                 await authClient.signUp.email({
@@ -211,7 +230,7 @@ export default function SignUp() {
               }}
             >
               {loading ? (
-                <Loader2 size={16} className="animate-spin" />
+                <Loader2 size={16} style={{ animation: 'spin 1s linear infinite' }} />
               ) : (
                 "Create an account"
               )}
@@ -220,9 +239,20 @@ export default function SignUp() {
         </CardContent>
 
         <CardFooter>
-          <div className="flex justify-center w-full border-t py-4">
-            <p className="text-center text-xs text-neutral-500">
-              Secured by <span className="text-orange-400">better-auth.</span>
+          <div style={{
+            display: 'flex',
+            justifyContent: 'center',
+            width: '100%',
+            borderTop: '1px solid var(--border)',
+            paddingTop: '16px',
+            paddingBottom: '16px',
+          }}>
+            <p style={{
+              textAlign: 'center',
+              fontSize: '12px',
+              color: '#737373',
+            }}>
+              Secured by <span style={{ color: '#fb923c' }}>better-auth.</span>
             </p>
           </div>
         </CardFooter>

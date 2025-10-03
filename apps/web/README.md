@@ -1,6 +1,6 @@
 # Acme Web App
 
-A modern Next.js 15 web application with Tailwind CSS v4, shadcn/ui components, and TypeScript. 
+A modern Next.js 15 web application with vanilla CSS styling, custom UI components, and TypeScript.
 
 ## 🚀 Quick Start
 
@@ -75,8 +75,8 @@ This project uses Tailwind CSS v4 with the latest features:
 Pre-built, accessible components built with Radix UI and Tailwind CSS:
 
 ```tsx
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 
 export default function Page() {
   return (
@@ -88,7 +88,7 @@ export default function Page() {
         <Button>Get Started</Button>
       </CardContent>
     </Card>
-  )
+  );
 }
 ```
 
@@ -98,7 +98,7 @@ export default function Page() {
 
 ```typescript
 // next.config.ts
-import type { NextConfig } from "next"
+import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   experimental: {
@@ -111,9 +111,9 @@ const nextConfig: NextConfig = {
       },
     },
   },
-}
+};
 
-export default nextConfig
+export default nextConfig;
 ```
 
 ### Tailwind Configuration
@@ -124,10 +124,10 @@ export default nextConfig
 module.exports = {
   darkMode: ["class"],
   content: [
-    './pages/**/*.{ts,tsx}',
-    './components/**/*.{ts,tsx}',
-    './app/**/*.{ts,tsx}',
-    './src/**/*.{ts,tsx}',
+    "./pages/**/*.{ts,tsx}",
+    "./components/**/*.{ts,tsx}",
+    "./app/**/*.{ts,tsx}",
+    "./src/**/*.{ts,tsx}",
   ],
   theme: {
     extend: {
@@ -146,7 +146,7 @@ module.exports = {
     },
   },
   plugins: [require("tailwindcss-animate")],
-}
+};
 ```
 
 ## 📦 Dependencies
@@ -188,7 +188,7 @@ export default function DashboardPage() {
     <div className="container mx-auto p-6">
       <h1 className="text-2xl font-bold">Dashboard</h1>
     </div>
-  )
+  );
 }
 ```
 
@@ -205,21 +205,21 @@ pnpm ui:add dialog
 ### Using Shared UI Components
 
 ```tsx
-import { Button } from '@acme/ui/components/button'
-import { Card } from '@acme/ui/components/card'
+import { Button } from "@acme/ui/components/button";
+import { Card } from "@acme/ui/components/card";
 
 // Use shared components from the monorepo
 ```
 
 ## 🔧 Available Scripts
 
-| Script | Description |
-|--------|-------------|
-| `pnpm dev` | Start development server with Turbopack |
-| `pnpm build` | Build for production |
-| `pnpm start` | Start production server |
-| `pnpm lint` | Run ESLint |
-| `pnpm check-types` | Run TypeScript type checking |
+| Script             | Description                             |
+| ------------------ | --------------------------------------- |
+| `pnpm dev`         | Start development server with Turbopack |
+| `pnpm build`       | Build for production                    |
+| `pnpm start`       | Start production server                 |
+| `pnpm lint`        | Run ESLint                              |
+| `pnpm check-types` | Run TypeScript type checking            |
 
 ## 🌐 Environment Variables
 
@@ -310,18 +310,21 @@ CMD ["node", "server.js"]
 ### Common Issues
 
 **Port 3000 already in use:**
+
 ```bash
 # Change port in package.json
 "dev": "next dev --port 3001"
 ```
 
 **Turbopack issues:**
+
 ```bash
 # Disable Turbopack temporarily
 "dev": "next dev --port 3000"
 ```
 
 **Build errors:**
+
 ```bash
 # Clear Next.js cache
 rm -rf .next

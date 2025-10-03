@@ -4,26 +4,62 @@ import * as React from "react";
 import * as CheckboxPrimitive from "@radix-ui/react-checkbox";
 import { CheckIcon } from "lucide-react";
 
-import { cn } from "@acme/ui/lib/utils";
+
+
+const checkboxStyles = {
+  root: {
+    width: '16px',
+    height: '16px',
+    flexShrink: 0,
+    borderRadius: '4px',
+    border: '1px solid var(--border)',
+    backgroundColor: 'var(--background)',
+    transition: 'all 0.2s',
+    outline: 'none',
+    cursor: 'pointer',
+    '&:disabled': {
+      cursor: 'not-allowed',
+      opacity: 0.5,
+    },
+    '&[data-state="checked"]': {
+      backgroundColor: 'var(--primary)',
+      borderColor: 'var(--primary)',
+      color: 'var(--primary-foreground)',
+    },
+    '&:focus-visible': {
+      borderColor: 'var(--ring)',
+      boxShadow: '0 0 0 3px var(--ring)',
+    },
+  },
+  indicator: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    color: 'currentColor',
+  },
+  icon: {
+    width: '14px',
+    height: '14px',
+  },
+};
 
 function Checkbox({
   className,
+  style,
   ...props
 }: React.ComponentProps<typeof CheckboxPrimitive.Root>) {
   return (
     <CheckboxPrimitive.Root
       data-slot="checkbox"
-      className={cn(
-        "peer border-input dark:bg-input/30 data-[state=checked]:bg-primary data-[state=checked]:text-primary-foreground dark:data-[state=checked]:bg-primary data-[state=checked]:border-primary focus-visible:border-ring focus-visible:ring-ring/50 aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive size-4 shrink-0 rounded-[4px] border shadow-xs transition-shadow outline-none focus-visible:ring-[3px] disabled:cursor-not-allowed disabled:opacity-50",
-        className
-      )}
+      style={{ ...checkboxStyles.root, ...style }}
+      className={className}
       {...props}
     >
       <CheckboxPrimitive.Indicator
         data-slot="checkbox-indicator"
-        className="flex items-center justify-center text-current transition-none"
+        style={checkboxStyles.indicator}
       >
-        <CheckIcon className="size-3.5" />
+        <CheckIcon style={checkboxStyles.icon} />
       </CheckboxPrimitive.Indicator>
     </CheckboxPrimitive.Root>
   );
