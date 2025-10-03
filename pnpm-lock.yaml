@@ -144,12 +144,6 @@ importers:
         specifier: ^8.15.4
         version: 8.15.4
 
-  packages/db:
-    devDependencies:
-      '@hastee-xplat/eslint':
-        specifier: workspace:*
-        version: link:../../tooling/eslint
-
   packages/ui:
     dependencies:
       react:

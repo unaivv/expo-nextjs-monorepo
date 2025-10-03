@@ -5,8 +5,7 @@
     "paths": {
       "@hastee-xplat/ui": ["./packages/ui/src"],
       "@hastee-xplat/ui/*": ["./packages/ui/src/*"],
-      "@hastee-xplat/auth": ["./packages/auth"],
-      "@hastee-xplat/db": ["./packages/db/src"]
+      "@hastee-xplat/auth": ["./packages/auth"]
     }
   },
   "include": ["**/*.ts", "**/*.tsx", "**/*.js", "**/*.jsx"],
